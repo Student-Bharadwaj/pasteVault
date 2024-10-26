@@ -16,9 +16,9 @@ export default function Pastes() {
 
   return (
     <div className="w-screen  flex flex-col mt-8 items-center">
-      <div className="relative flex items-center">
+      <div className=" flex w-full justify-center gap-4 sm:gap-7 md:gap-10 items-center">
       <input
-        className="bg-black  border border-slate-400 w-[400px] px-3 py-2 pl-8 rounded-lg"
+        className="bg-black  border border-slate-400 w-[200px] sm:w-[300px] md:w-[350px] px-1 sm:px-2  md:px-3  py-1 md:py-2  rounded-xl md:rounded-xl"
         type="text"
         value={search}
         id="search"
@@ -28,25 +28,23 @@ export default function Pastes() {
         name="search"
         placeholder="Search paste here....."
       />
-      <label htmlFor="search" className="flex items-center">
-      <i className="fa-solid fa-magnifying-glass absolute left-2 text-gray-300"></i>
-      </label>
+     
       
 
       <button
-          className=" ml-16 text-lg border-none px-4 py-2 bg-red-700 hover:bg-red-600  rounded-xl"
+          className="  text-base md:text-lg border-none px-4  py-1  bg-red-700 hover:bg-red-600  rounded-xl"
           onClick={() => {
             dispatch(resetAllPastes());
           }}
         >
-          Reset all Pastes
+          Reset 
         </button>
      
       </div>
      
 
-      <main className="border border-gray-500 rounded-lg bg-black p-2 flex flex-col gap-3  h-[380px] w-6/12 overflow-y-scroll mt-4  ">
-        <div className="text-3xl">
+      <main className="border border-gray-500 rounded-lg bg-black p-2 flex flex-col gap-3  h-[450px] w-11/12 md:w-9/12 lg:w-8/12 overflow-y-scroll mt-4  ">
+        <div className="text-xl sm:text-xl md:text-2xl lg:text-3xl">
 
           All Pastes
           <hr className="" />
@@ -56,38 +54,39 @@ export default function Pastes() {
           filteredPastes.map((paste) => {
             return (
               <div
-                className="border border-gray-500 rounded-lg  w-full flex justify-between px-4 pt-4 pb-2   "
+                className="border border-gray-500 rounded-lg  w-full flex justify-between px-1 md:px-3 lg:px-4 pt-2 lg:pt-4 pb-2   "
                 key={paste.id}
               >
-                <div className="flex w-8/12 flex-col h-[120px] pr-4  gap-2  text-ellipsis line-clamp-3">
-                  <p className="text-2xl font-medium">{paste.title}</p> 
-                  <p className="text-lg text-gray-400">{paste.content}</p>
+                <div className="flex w-8/12 flex-col h-[120px] pr-1 md:pr-2 lg:pr-4  gap-2  text-ellipsis line-clamp-3">
+                  <p className="text-lg md:text-xl lg:text-2xl font-normal md:font-medium">{paste.title}</p> 
+                  <p className="text-base md:text-lg text-gray-400">{paste.content}</p>
                 </div>
-                <div className="flex w-4/12 flex-col justify-evenly ">
-                  <div className="  flex justify-evenly">
+                <div className="flex w-4/12 flex-col pt-1 md:pt-1 lg:pt-0 justify-normal
+                 lg:justify-evenly  ">
+                  <div className="  flex gap-2 justify-center  sm:justify-evenly md:gap-0  md:justify-evenly">
                     <button
                       onClick={() => {
                         navigate(`/pastes/update/${paste.id}`);
                       }}
                     >
-                    <i class="fa-regular fa-pen-to-square"></i>
+                    <i class="fa-regular fa-pen-to-square text-sm lg:text-base "></i>
                     </button>
                     <button
                       onClick={() => {
                         dispatch(removeFromPastes(paste.id));
                       }}
                     >
-  <i class="fa-solid fa-trash"></i>
+  <i class="fa-solid fa-trash text-sm lg:text-base "></i>
                     </button>
                     <button
                       onClick={() => {
                         navigate(`/pastes/view/${paste.id}`);
                       }}
                     >
-                      <i class="fa-regular fa-eye"></i>
+                      <i class="fa-regular fa-eye text-sm lg:text-base "></i>
                     </button>
                     <button>
-                    <i class="fa-solid fa-share"></i>
+                    <i class="fa-solid fa-share text-sm lg:text-base "></i>
                     </button>
                     <button
                       onClick={() => {
@@ -125,11 +124,11 @@ export default function Pastes() {
                           });
                       }}
                     >
-             <i class="fa-regular fa-copy"></i>
+             <i class="fa-regular fa-copy text-sm lg:text-base "></i>
                     </button>
                   </div>
 
-                  <p className="text-lg">{handleDate(paste.created_At)}</p>
+                  <p className=" text-center text-sm md:text-base  lg:text-lg pt-6 lg:pt-0  ">{handleDate(paste.created_At)}</p>
                 </div>
               </div>
             );
